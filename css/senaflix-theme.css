@@ -1,0 +1,809 @@
+/* =========================================================
+   SENAFLIX V2
+   Premium Dark / Black / Deep Red
+   ========================================================= */
+
+
+/* =========================================================
+   1. OVERRIDE GLOBAL JELLYFIN PALETTE
+   ========================================================= */
+
+:root {
+
+    /* BRAND */
+    --senaflix-red: #c41220;
+    --senaflix-red-hover: #e11f2d;
+    --senaflix-red-dark: #870d16;
+
+    /* BACKGROUNDS */
+    --senaflix-bg: #08090a;
+    --senaflix-bg-soft: #0d0e10;
+    --senaflix-surface: #121316;
+
+    /* TEXT */
+    --senaflix-text: #f4f4f4;
+    --senaflix-text-muted: rgba(255,255,255,.62);
+
+    /* ---- JELLYFIN PALETTE ---- */
+
+    --jf-palette-primary-main: #c41220 !important;
+    --jf-palette-primary-mainChannel: 196 18 32 !important;
+
+    --jf-palette-primary-dark: #870d16 !important;
+    --jf-palette-primary-light: #e11f2d !important;
+
+    --jf-palette-primary-contrastText: #ffffff !important;
+
+    --jf-palette-secondary-main: #e11f2d !important;
+    --jf-palette-secondary-mainChannel: 225 31 45 !important;
+    --jf-palette-secondary-contrastText: #ffffff !important;
+
+    --jf-palette-background-default: #08090a !important;
+    --jf-palette-background-paper: #111215 !important;
+
+    --jf-palette-AppBar-defaultBg: #09090a !important;
+    --jf-palette-AppBar-transparentBg: rgba(8,9,10,.88) !important;
+
+    --jf-palette-text-primary: #f4f4f4 !important;
+    --jf-palette-text-secondary: rgba(255,255,255,.65) !important;
+
+    --jf-palette-action-hover: rgba(255,255,255,.055) !important;
+    --jf-palette-action-focus: rgba(196,18,32,.16) !important;
+
+    --jf-palette-divider: rgba(255,255,255,.07) !important;
+
+    --jf-palette-Button-inheritContainedBg:
+        rgba(255,255,255,.07) !important;
+
+    --jf-palette-Button-inheritContainedHoverBg:
+        rgba(255,255,255,.12) !important;
+
+    --jf-card-borderRadius: 12px !important;
+}
+
+
+/* =========================================================
+   2. GLOBAL
+   FIX BACKDROPS FILMS / SERIES
+   ========================================================= */
+
+/* Senaflix root background */
+html {
+    background-color: #08090a !important;
+    color: #f4f4f4 !important;
+}
+
+/* Keep these layers transparent so Jellyfin backdrops remain visible */
+body,
+.skinBody,
+.skinBody-withoutHeader,
+.mainAnimatedPage,
+.libraryPage,
+.page {
+    background-color: transparent !important;
+}
+
+/* Senaflix background only when there is NO backdrop */
+.backgroundContainer:not(.withBackdrop):not(.backgroundContainer-transparent) {
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(125,10,18,.10),
+            transparent 38%
+        ),
+        linear-gradient(
+            180deg,
+            #0c0c0e 0%,
+            #08090a 60%,
+            #060607 100%
+        ) !important;
+}
+
+/* When a movie / series has a backdrop, let Jellyfin render it */
+.backgroundContainer.withBackdrop {
+    background-color: #08090a !important;
+}
+
+.backgroundContainer.withBackdrop .backgroundImage {
+    opacity: 1 !important;
+    filter:
+        brightness(.72)
+        contrast(1.04)
+        saturate(1.02);
+}
+
+/* Subtle cinematic fade on item details */
+#itemDetailPage .darkenContent {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(8,9,10,.05) 0%,
+            rgba(8,9,10,.18) 45%,
+            rgba(8,9,10,.82) 100%
+        ) !important;
+}
+
+
+/* =========================================================
+   3. HEADER
+   ========================================================= */
+
+.skinHeader,
+.skinHeader-withBackground {
+
+    background:
+        rgba(7,7,8,.92) !important;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.055);
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.30);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+}
+
+
+/* =========================================================
+   4. BRANDING / CUSTOM LOGO
+   ========================================================= */
+
+/*
+   The header logo is intentionally handled by the Jellyfin
+   Custom Logo plugin instead of CSS pseudo-elements.
+
+   Recommended Senaflix setup:
+   - standalone Senaflix emblem
+   - keep Jellyfin's native server-name text
+   - header logo height around 3em
+   - hide header text on narrow screens if desired
+*/
+
+
+/* =========================================================
+   5. HEADER NAVIGATION
+   ========================================================= */
+
+.headerTabs,
+.emby-tabs {
+
+    gap: .25em;
+}
+
+
+.emby-tab-button {
+
+    color:
+        rgba(255,255,255,.55) !important;
+
+    font-weight: 500;
+
+    transition:
+        color .2s ease,
+        background .2s ease;
+}
+
+
+.emby-tab-button:hover {
+
+    color:
+        #fff !important;
+}
+
+
+.emby-tab-button-active {
+
+    color:
+        #fff !important;
+
+    background:
+        rgba(196,18,32,.12) !important;
+
+    border-radius:
+        7px !important;
+}
+
+
+/* =========================================================
+   6. FORCE ALL BLUE PRIMARY BUTTONS TO RED
+   ========================================================= */
+
+.button-submit,
+.btnPlay,
+.btnPlayAll,
+.btnShuffle,
+.btnQueue,
+.btnNewItem,
+.btnNewCollection,
+
+.MuiButton-containedPrimary,
+.MuiButton-contained.MuiButton-colorPrimary {
+
+    background:
+        linear-gradient(
+            135deg,
+            #aa101a,
+            #d91d2a
+        ) !important;
+
+    color:
+        #fff !important;
+
+    border:
+        none !important;
+
+    border-radius:
+        8px !important;
+
+    box-shadow:
+        0 6px 18px rgba(180,15,30,.22);
+
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        filter .18s ease;
+}
+
+
+.button-submit:hover,
+.btnPlay:hover,
+.btnPlayAll:hover,
+.btnShuffle:hover,
+.btnQueue:hover,
+
+.MuiButton-containedPrimary:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            #bd1420,
+            #ed2938
+        ) !important;
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 9px 24px rgba(190,20,30,.32);
+}
+
+
+/* =========================================================
+   7. REMOVE REMAINING CYAN / BLUE STATES
+   ========================================================= */
+
+.buttonActive,
+.button-link,
+.paper-icon-button-light:hover,
+.paper-icon-button-light:active,
+.emby-tab-button:hover,
+.guide-date-tab-button.emby-tab-button-active {
+
+    color:
+        #e32634 !important;
+}
+
+
+.itemProgressBarForeground,
+
+.playedIndicator,
+.countIndicator,
+.fullSyncIndicator,
+.mediaSourceIndicator,
+
+.selectionCommandsPanel {
+
+    background:
+        #c41220 !important;
+
+    color:
+        #fff !important;
+}
+
+
+/* check mark */
+
+.emby-checkbox:checked
++ span
++ .checkboxOutline {
+
+    background:
+        #c41220 !important;
+
+    border-color:
+        #c41220 !important;
+}
+
+
+/* =========================================================
+   8. PROGRESS BARS
+   Legacy + Modern Jellyfin 12
+   ========================================================= */
+
+.itemProgressBar {
+    background: rgba(255,255,255,.12) !important;
+    height: 3px !important;
+    border-radius: 999px !important;
+    overflow: hidden !important;
+}
+
+.itemProgressBarForeground,
+.innerCardFooter .itemProgressBarForeground,
+.card .itemProgressBarForeground,
+.listItem .itemProgressBarForeground {
+    background:
+        linear-gradient(
+            90deg,
+            #9d0d17,
+            #e52937
+        ) !important;
+    background-color: #c41220 !important;
+    border-radius: 999px !important;
+    box-shadow: 0 0 8px rgba(213,25,35,.4);
+}
+
+/* Modern React / MUI */
+.MuiLinearProgress-root {
+    background-color: rgba(255,255,255,.12) !important;
+    border-radius: 999px !important;
+    overflow: hidden !important;
+}
+
+.MuiLinearProgress-bar,
+.MuiLinearProgress-bar1,
+.MuiLinearProgress-bar2 {
+    background:
+        linear-gradient(
+            90deg,
+            #9d0d17,
+            #e52937
+        ) !important;
+    background-color: #c41220 !important;
+}
+
+/* Native HTML progress */
+progress {
+    accent-color: #c41220 !important;
+}
+
+progress::-webkit-progress-bar {
+    background: rgba(255,255,255,.12) !important;
+    border-radius: 999px !important;
+}
+
+progress::-webkit-progress-value {
+    background:
+        linear-gradient(
+            90deg,
+            #9d0d17,
+            #e52937
+        ) !important;
+    border-radius: 999px !important;
+}
+
+progress::-moz-progress-bar {
+    background:
+        linear-gradient(
+            90deg,
+            #9d0d17,
+            #e52937
+        ) !important;
+    border-radius: 999px !important;
+}
+
+
+/* =========================================================
+   9. POSTER CARDS
+   ========================================================= */
+
+.cardBox {
+
+    transition:
+        transform .24s cubic-bezier(.2,.8,.2,1);
+}
+
+
+.cardImageContainer,
+.cardContent,
+.cardScalable {
+
+    border-radius:
+        12px !important;
+}
+
+
+.cardImageContainer {
+
+    box-shadow:
+        0 7px 24px rgba(0,0,0,.30);
+
+    border:
+        1px solid rgba(255,255,255,.04);
+
+    overflow:
+        hidden;
+
+    transition:
+        box-shadow .25s ease,
+        border-color .25s ease,
+        filter .25s ease;
+}
+
+
+.card:hover .cardBox {
+
+    transform:
+        translateY(-6px)
+        scale(1.018);
+}
+
+
+.card:hover .cardImageContainer {
+
+    border-color:
+        rgba(196,18,32,.32);
+
+    box-shadow:
+        0 17px 38px rgba(0,0,0,.55),
+        0 0 0 1px rgba(196,18,32,.10);
+
+    filter:
+        brightness(1.05)
+        saturate(1.04);
+}
+
+
+/* =========================================================
+   10. CARD TEXT
+   ========================================================= */
+
+.cardText {
+
+    font-weight:
+        500 !important;
+
+    color:
+        rgba(255,255,255,.87) !important;
+}
+
+
+.cardText-secondary {
+
+    color:
+        rgba(255,255,255,.48) !important;
+}
+
+
+/* =========================================================
+   11. SECTION TITLES
+   ========================================================= */
+
+.sectionTitle,
+.sectionTitleTextButton {
+
+    color:
+        #f4f4f4 !important;
+
+    font-weight:
+        650 !important;
+
+    letter-spacing:
+        -.015em;
+}
+
+
+/* =========================================================
+   12. TOOLBAR BUTTONS
+   ========================================================= */
+
+.btnFilter,
+.btnSort,
+.btnSelectView,
+.btnViewSettings {
+
+    color:
+        rgba(255,255,255,.72) !important;
+
+    border-radius:
+        8px !important;
+}
+
+
+.btnFilter:hover,
+.btnSort:hover,
+.btnSelectView:hover,
+.btnViewSettings:hover {
+
+    color:
+        #fff !important;
+
+    background:
+        rgba(255,255,255,.07) !important;
+}
+
+
+/* =========================================================
+   13. MENU / DRAWER
+   ========================================================= */
+
+.mainDrawer {
+
+    background:
+        rgba(8,8,9,.97) !important;
+
+    border-right:
+        1px solid rgba(255,255,255,.06);
+}
+
+
+.navMenuOption {
+
+    border-radius:
+        8px !important;
+
+    margin:
+        2px 7px;
+}
+
+
+.navMenuOption-selected {
+
+    background:
+        rgba(196,18,32,.17) !important;
+
+    color:
+        #fff !important;
+}
+
+
+/* =========================================================
+   14. DIALOGS
+   ========================================================= */
+
+.dialog,
+.actionSheet,
+.paperList,
+.visualCardBox {
+
+    background:
+        rgba(16,17,19,.96) !important;
+
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    border-radius:
+        12px !important;
+
+    box-shadow:
+        0 18px 50px rgba(0,0,0,.55);
+}
+
+
+/* =========================================================
+   15. FORMS / SEARCH
+   ========================================================= */
+
+.emby-input,
+.emby-textarea,
+.emby-select {
+
+    background:
+        rgba(255,255,255,.055) !important;
+
+    border:
+        1px solid rgba(255,255,255,.09) !important;
+
+    color:
+        #f4f4f4 !important;
+
+    border-radius:
+        8px !important;
+}
+
+
+.emby-input:focus,
+.emby-textarea:focus,
+.emby-select:focus {
+
+    border-color:
+        #c41220 !important;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(196,18,32,.12) !important;
+}
+
+
+/* =========================================================
+   16. ALPHABET PICKER
+   ========================================================= */
+
+.alphaPickerButton-selected {
+
+    color:
+        #e32231 !important;
+}
+
+
+.alphaPickerButton:hover {
+
+    color:
+        #ffffff !important;
+}
+
+
+/* =========================================================
+   17. SELECTION CHECK
+   ========================================================= */
+
+.itemSelectionPanel {
+
+    border:
+        2px solid
+        rgba(196,18,32,.85) !important;
+}
+
+
+/* =========================================================
+   18. PLAYER FOOTER
+   ========================================================= */
+
+.appfooter {
+
+    background:
+        rgba(9,9,10,.92) !important;
+
+    backdrop-filter:
+        blur(20px);
+
+    border-top:
+        1px solid rgba(255,255,255,.06);
+
+    box-shadow:
+        0 -10px 40px rgba(0,0,0,.35);
+}
+
+
+/* =========================================================
+   19. SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+
+    width:
+        7px;
+
+    height:
+        7px;
+}
+
+
+::-webkit-scrollbar-track {
+
+    background:
+        #08090a;
+}
+
+
+::-webkit-scrollbar-thumb {
+
+    background:
+        rgba(196,18,32,.58);
+
+    border-radius:
+        999px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+
+    background:
+        #d91d2a;
+}
+
+
+/* =========================================================
+   20. TEXT SELECTION
+   ========================================================= */
+
+::selection {
+
+    background:
+        #c41220;
+
+    color:
+        #fff;
+}
+
+
+/* =========================================================
+   21. MOBILE
+   ========================================================= */
+
+@media (max-width: 50em) {
+
+    .card:hover .cardBox {
+
+        transform:
+            none;
+    }
+
+}
+
+/* =========================================================
+   SENAFLIX — MODERN MOBILE DRAWER / JELLYFIN 12
+   ========================================================= */
+
+.MuiDrawer-paper {
+    background:
+        linear-gradient(
+            180deg,
+            #101114 0%,
+            #0c0d0f 48%,
+            #08090a 100%
+        ) !important;
+    background-color: #0b0c0e !important;
+    color: #f4f4f4 !important;
+    border-right: 1px solid rgba(255,255,255,.06) !important;
+    box-shadow: 12px 0 35px rgba(0,0,0,.48) !important;
+}
+
+.MuiDrawer-paper .MuiList-root {
+    background: transparent !important;
+}
+
+.MuiDrawer-paper .MuiListSubheader-root {
+    background: transparent !important;
+    color: rgba(255,255,255,.55) !important;
+}
+
+.MuiDrawer-paper .MuiListItemButton-root {
+    color: rgba(255,255,255,.90) !important;
+    background: transparent !important;
+    border-left: 3px solid transparent !important;
+}
+
+.MuiDrawer-paper .MuiListItemButton-root.Mui-selected {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(196,18,32,.36),
+            rgba(196,18,32,.15)
+        ) !important;
+    border-left: 3px solid #c41220 !important;
+    color: #ffffff !important;
+}
+
+.MuiDrawer-paper .MuiListItemButton-root:hover {
+    background: rgba(255,255,255,.055) !important;
+}
+
+.MuiDrawer-paper .MuiListItemIcon-root,
+.MuiDrawer-paper .MuiSvgIcon-root,
+.MuiDrawer-paper .material-icons {
+    color: rgba(255,255,255,.92) !important;
+}
+
+.MuiDrawer-paper .MuiDivider-root {
+    border-color: rgba(255,255,255,.07) !important;
+}
+
+.MuiDrawer-paper
+.MuiList-root:first-of-type
+.MuiListItem-root:first-child
+.MuiListItemText-primary {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+.MuiDrawer-paper
+.MuiList-root:first-of-type
+.MuiListItem-root:first-child
+.MuiListItemText-secondary {
+    color: rgba(255,255,255,.56) !important;
+}
+
