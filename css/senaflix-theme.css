@@ -807,3 +807,126 @@ progress::-moz-progress-bar {
     color: rgba(255,255,255,.56) !important;
 }
 
+/* =========================================================
+   SENAFLIX — TYPOGRAPHY V3 SAFE
+   ========================================================= */
+
+/*
+   Important: do NOT use a universal selector such as body *.
+   Jellyfin uses icon fonts for many controls; forcing the text font
+   onto every element turns some icons into empty square glyphs.
+*/
+
+html,
+body,
+.skinBody {
+    font-family:
+        "Segoe UI Variable",
+        "Segoe UI",
+        "Helvetica Neue",
+        Arial,
+        sans-serif !important;
+
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+/* Top navigation */
+.emby-tab-button,
+.headerTabs .emby-tab-button {
+    font-family:
+        "Segoe UI Variable",
+        "Segoe UI",
+        "Helvetica Neue",
+        Arial,
+        sans-serif !important;
+
+    font-weight: 400 !important;
+    letter-spacing: -0.015em !important;
+}
+
+/* Section titles */
+.sectionTitle,
+.sectionTitleText,
+.sectionTitleTextButton {
+    font-family:
+        "Segoe UI Variable",
+        "Segoe UI",
+        "Helvetica Neue",
+        Arial,
+        sans-serif !important;
+
+    font-weight: 400 !important;
+    letter-spacing: -0.025em !important;
+}
+
+/* Titles below posters */
+.cardText,
+.cardText-first {
+    font-family:
+        "Segoe UI Variable",
+        "Segoe UI",
+        "Helvetica Neue",
+        Arial,
+        sans-serif !important;
+
+    font-weight: 400 !important;
+    letter-spacing: -0.012em !important;
+}
+
+/* Secondary metadata */
+.cardText-secondary,
+.secondaryText,
+.listItemBodyText {
+    font-family:
+        "Segoe UI Variable",
+        "Segoe UI",
+        "Helvetica Neue",
+        Arial,
+        sans-serif !important;
+
+    font-weight: 350 !important;
+}
+
+/* Jellyfin Modern / MUI — text only */
+.MuiTypography-root,
+.MuiListItemText-primary,
+.MuiListItemText-secondary,
+.MuiButton-label {
+    font-family:
+        "Segoe UI Variable",
+        "Segoe UI",
+        "Helvetica Neue",
+        Arial,
+        sans-serif !important;
+}
+
+.MuiTypography-h1,
+.MuiTypography-h2,
+.MuiTypography-h3,
+.MuiTypography-h4,
+.MuiTypography-h5,
+.MuiTypography-h6 {
+    font-weight: 400 !important;
+    letter-spacing: -0.025em !important;
+}
+
+.MuiTypography-body1,
+.MuiTypography-body2 {
+    font-weight: 400 !important;
+}
+
+/* Section title arrow alignment */
+.sectionTitleTextButton {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: .25em !important;
+}
+
+.sectionTitleTextButton .material-icons,
+.sectionTitleTextButton .material-symbols-rounded,
+.sectionTitleTextButton .material-symbols-outlined {
+    line-height: 1 !important;
+    vertical-align: middle !important;
+    transform: translateY(1px);
+}
