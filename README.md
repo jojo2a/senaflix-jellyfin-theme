@@ -16,6 +16,7 @@ Senaflix uses a dark cinema-inspired identity with:
 - preserved movie / series backdrops
 - themed Jellyfin 12 Modern / MUI drawers
 - desktop + mobile styling
+- lighter custom typography with icon-safe selectors
 
 The theme has been confirmed working on Jellyfin 12.1 in the web client and the official Android app. Web-based iOS clients should inherit the same server-side CSS, although platform-specific layout differences can exist.
 
@@ -57,6 +58,8 @@ The core theme works through Jellyfin Custom CSS. The JavaScript files are only 
 6. Fully reload Jellyfin. On mobile, completely closing and reopening the app may be required because the embedded WebView can cache UI state.
 
 See [docs/setup.md](docs/setup.md) for the full setup.
+
+Future visual improvements are tracked in [docs/roadmap.md](docs/roadmap.md), including custom-generated Senaflix library covers.
 
 ## Important
 
