@@ -18,6 +18,51 @@ Senaflix covers:
 - `.MuiLinearProgress-bar*`
 - native HTML `progress`
 
+## Typography created square boxes instead of icons
+
+Cause: a global selector such as:
+
+```css
+body *
+```
+
+forces the normal UI font onto Jellyfin's icon-font elements.
+
+Result: icons that rely on Material Icons or related glyph fonts can appear as empty squares.
+
+Fix: remove the universal font override and use the safe text-only selectors included under:
+
+```
+SENAFLIX — TYPOGRAPHY V3 SAFE
+```
+
+in `css/senaflix-theme.css`.
+
+## Section-title arrow looks slightly too high
+
+The text and arrow can use different font metrics, so baseline alignment is not always visually centered after changing the UI typography.
+
+Senaflix fixes this by using:
+
+```css
+.sectionTitleTextButton {
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+.sectionTitleTextButton .material-icons {
+    transform: translateY(1px);
+}
+```
+
+## The font inside library thumbnails does not change
+
+This is expected.
+
+The large title visible inside generated library thumbnails is baked into the image produced by Jellyfin. It is not normal page text and therefore cannot be changed with the Senaflix CSS typography rules.
+
+A custom/generated library-cover system is the recommended future improvement. See [roadmap.md](roadmap.md).
+
 ## Admin logo still shows Jellyfin
 
 Jellyfin 12's Modern admin drawer uses a React / MUI header.
